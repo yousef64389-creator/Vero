@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fairouz ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#070414;
+    color:#fff;
+    font-family:'Cairo',sans-serif;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-5;
+    background:
+      radial-gradient(circle at 20% 20%,rgba(157,72,255,.25),transparent 30%),
+      radial-gradient(circle at 80% 40%,rgba(255,65,155,.18),transparent 30%),
+      radial-gradient(circle at 50% 90%,rgba(90,50,255,.22),transparent 35%),
+      linear-gradient(145deg,#080417,#16082d,#090416);
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:-50%;
+    z-index:-4;
+    background:
+      radial-gradient(circle,rgba(255,80,170,.08) 0 2px,transparent 3px);
+    background-size:70px 70px;
+    animation:moveStars 25s linear infinite;
+}
+
+@keyframes moveStars{
+    from{transform:translate(0,0)}
+    to{transform:translate(70px,70px)}
+}
+
+#particles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:1;
+}
+
+.particle{
+    position:absolute;
+    bottom:-50px;
+    opacity:0;
+    animation:floatUp linear forwards;
+    filter:drop-shadow(0 0 10px rgba(255,70,170,.5));
+}
+
+@keyframes floatUp{
+    0%{
+        transform:translateY(0) rotate(0deg) scale(.7);
+        opacity:0;
+    }
+    10%{opacity:.8}
+    50%{
+        opacity:1;
+        transform:translateY(-50vh) rotate(160deg) scale(1);
+    }
+    100%{
+        transform:translateY(-115vh) rotate(360deg) scale(.5);
+        opacity:0;
+    }
+}
+
+#lockScreen{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+    background:
+      radial-gradient(circle at 50% 30%,rgba(180,65,255,.2),transparent 35%),
+      linear-gradient(145deg,#080414,#150728,#070311);
+    transition:1s ease;
+}
+
+.lockBox{
+    width:min(430px,100%);
+    padding:35px 25px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:35px;
+    background:rgba(25,14,52,.58);
+    backdrop-filter:blur(25px);
+    box-shadow:
+      0 30px 80px rgba(0,0,0,.5),
+      inset 0 0 40px rgba(255,80,190,.04);
+}
+
+.lockHeart{
+    width:110px;
+    height:110px;
+    margin:0 auto 25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    font-size:55px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,150,220,.25);
+    box-shadow:0 0 45px rgba(255,50,170,.25);
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.08)}
+}
+
+.lockBox h1{
+    font-family:'Playfair Display',serif;
+    font-size:42px;
+    margin-bottom:5px;
+}
+
+.lockBox .small{
+    color:#d7cce8;
+    margin-bottom:28px;
+}
+
+.password{
+    width:100%;
+    height:55px;
+    border:none;
+    outline:none;
+    border-radius:18px;
+    background:rgba(0,0,0,.25);
+    border:1px solid rgba(255,255,255,.15);
+    color:white;
+    text-align:center;
+    font-size:18px;
+    font-family:inherit;
+    margin-bottom:14px;
+}
+
+.password::placeholder{
+    color:#aaa0b7;
+}
+
+.enterBtn{
+    width:100%;
+    height:55px;
+    border:none;
+    border-radius:18px;
+    cursor:pointer;
+    color:white;
+    font-size:18px;
+    font-weight:700;
+    font-family:inherit;
+    background:linear-gradient(135deg,#b14cff,#ff4da6);
+    box-shadow:0 10px 30px rgba(210,50,170,.25);
+    transition:.3s;
+}
+
+.enterBtn:active{
+    transform:scale(.96);
+}
+
+.error{
+    height:25px;
+    margin-top:12px;
+    color:#ff83bd;
+    font-size:14px;
+}
+
+#main{
+    display:none;
+}
+
+section{
+    width:min(720px,92%);
+    margin:auto;
+    min-height:100vh;
+    padding:80px 0;
+    position:relative;
+}
+
+.brand{
+    text-align:center;
+    font-family:'Playfair Display',serif;
+    color:#f58bc9;
+    letter-spacing:3px;
+    font-size:14px;
+    margin-top:30px;
+    opacity:.8;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.heroContent{
+    width:100%;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 18px;
+    border:1px solid rgba(255,130,200,.4);
+    border-radius:50px;
+    background:rgba(255,255,255,.05);
+    margin-bottom:25px;
+    color:#ff9ad1;
+}
+
+.heroPhoto{
+    width:210px;
+    height:210px;
+    margin:auto;
+    border-radius:50%;
+    padding:6px;
+    background:linear-gradient(135deg,#ff63b4,#8955ff,#ff63b4);
+    box-shadow:
+      0 0 40px rgba(255,70,170,.3),
+      0 0 90px rgba(130,70,255,.15);
+    animation:photoGlow 3s infinite alternate;
+}
+
+@keyframes photoGlow{
+    from{box-shadow:0 0 30px rgba(255,70,170,.25)}
+    to{box-shadow:0 0 65px rgba(255,70,170,.55)}
+}
+
+.heroPhoto img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+    display:block;
+}
+
+.hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:52px;
+    margin-top:28px;
+    text-shadow:0 0 25px rgba(255,100,190,.3);
+}
+
+.hero h2{
+    margin-top:12px;
+    color:#ff82c7;
+    font-size:25px;
+}
+
+.heroText{
+    margin:25px auto;
+    color:#ddd4e6;
+    line-height:2;
+    max-width:580px;
+}
+
+.scrollHint{
+    margin-top:40px;
+    animation:bounce 1.8s infinite;
+    color:#ff9ed2;
+}
+
+@keyframes bounce{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(12px)}
+}
+
+.glass{
+    background:rgba(30,17,57,.58);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:30px;
+    backdrop-filter:blur(18px);
+    box-shadow:
+      0 25px 70px rgba(0,0,0,.25),
+      inset 0 0 35px rgba(255,100,190,.025);
+}
+
+.loveSection{
+    text-align:center;
+}
+
+.sectionTitle{
+    font-size:30px;
+    margin-bottom:28px;
+}
+
+.loveBox{
+    padding:30px 24px;
+    line-height:2.2;
+    color:#eee8f4;
+    font-size:17px;
+}
+
+.highlight{
+    color:#ff8fc9;
+}
+
+.counterSection{
+    text-align:center;
+}
+
+.counterBox{
+    padding:30px 20px;
+}
+
+.counterIntro{
+    font-size:20px;
+    margin-bottom:25px;
+}
+
+.counterGrid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.time{
+    padding:18px 8px;
+    border-radius:20px;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.time strong{
+    display:block;
+    font-size:30px;
+    color:#ff91cb;
+}
+
+.time span{
+    color:#bdb2c8;
+    font-size:13px;
+}
+
+.startDate{
+    margin-top:22px;
+    color:#aaa0b6;
+    font-size:13px;
+}
+
+.cardsSection{
+    text-align:center;
+}
+
+.cardsTitle{
+    font-size:28px;
+    margin-bottom:30px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.loveCard{
+    min-height:230px;
+    padding:20px;
+    border-radius:28px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:20px;
+    position:relative;
+    overflow:hidden;
+    background:
+      linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.025));
+    border:1px solid rgba(255,140,210,.14);
+    transition:.4s;
+}
+
+.loveCard::before{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background:rgba(255,80,180,.12);
+    filter:blur(30px);
+}
+
+.loveCard:hover{
+    transform:translateY(-8px) scale(1.02);
+    border-color:rgba(255,120,210,.4);
+    box-shadow:0 20px 50px rgba(210,50,180,.15);
+}
+
+.cardNumber{
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    font-weight:bold;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,140,220,.2);
+    color:#ff8fca;
+}
+
+.cardHint{
+    font-size:13px;
+    color:#aaa0b7;
+}
+
+.cardMessage{
+    display:none;
+    color:#fff;
+    font-size:18px;
+    line-height:1.9;
+    text-align:center;
+}
+
+.loveCard.open .cardNumber,
+.loveCard.open .cardHint{
+    display:none;
+}
+
+.loveCard.open .cardMessage{
+    display:block;
+    animation:appear .5s ease;
+}
+
+@keyframes appear{
+    from{opacity:0;transform:scale(.8)}
+    to{opacity:1;transform:scale(1)}
+}
+
+.finishSection{
+    text-align:center;
+}
+
+.finishButton{
+    padding:24px 25px;
+    cursor:pointer;
+    font-size:21px;
+    font-weight:700;
+    color:white;
+    transition:.3s;
+}
+
+.finishButton:hover{
+    transform:translateY(-5px);
+}
+
+.finishIcon{
+    font-size:35px;
+    display:block;
+    margin-bottom:8px;
+    animation:pulse 1.7s infinite;
+}
+
+.musicBox{
+    position:fixed;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(650px,92%);
+    z-index:50;
+    padding:12px 16px;
+    border-radius:22px;
+    background:rgba(15,8,28,.84);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.12);
+    display:flex;
+    align-items:center;
+    gap:13px;
+    box-shadow:0 15px 50px rgba(0,0,0,.4);
+}
+
+.musicIcon{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#ff55ae,#814fff);
+}
+
+.musicInfo{
+    flex:1;
+    text-align:right;
+}
+
+.musicInfo strong{
+    display:block;
+    font-size:14px;
+}
+
+.musicInfo small{
+    color:#9d93a8;
+}
+
+.musicBtn{
+    border:none;
+    width:43px;
+    height:43px;
+    border-radius:50%;
+    cursor:pointer;
+    background:rgba(255,255,255,.1);
+    color:white;
+    font-size:18px;
+}
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    background:rgba(2,1,8,.78);
+    backdrop-filter:blur(15px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+    animation:fade .35s ease;
+}
+
+@keyframes fade{
+    from{opacity:0}
+    to{opacity:1}
+}
+
+.modalBox{
+    width:min(620px,100%);
+    max-height:85vh;
+    overflow:auto;
+    padding:30px 24px;
+    border-radius:30px;
+    background:
+      linear-gradient(145deg,rgba(45,22,76,.95),rgba(18,9,37,.96));
+    border:1px solid rgba(255,130,210,.2);
+    box-shadow:0 30px 100px rgba(0,0,0,.7);
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    top:15px;
+    left:15px;
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+    color:white;
+    cursor:pointer;
+    font-size:20px;
+}
+
+.modalTitle{
+    text-align:center;
+    color:#ff91ca;
+    font-size:26px;
+    margin-bottom:25px;
+}
+
+.modalText{
+    white-space:pre-line;
+    line-height:2.15;
+    font-size:16px;
+    color:#eee7f1;
+    min-height:100px;
+}
+
+@media(max-width:550px){
+
+    section{
+        width:91%;
+        padding:70px 0;
+    }
+
+    .hero h1{
+        font-size:43px;
+    }
+
+    .heroPhoto{
+        width:180px;
+        height:180px;
+    }
+
+    .hero h2{
+        font-size:22px;
+    }
+
+    .counterGrid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .cards{
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+    }
+
+    .loveCard{
+        min-height:200px;
+    }
+
+    .musicBox{
+        bottom:10px;
+    }
+
+    .modalBox{
+        padding:28px 20px;
+    }
+}
+
+.loading{
+    position:fixed;
+    inset:0;
+    z-index:300;
+    background:#080414;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    transition:1s;
+}
+
+.loader{
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    border:6px solid rgba(255,255,255,.12);
+    border-top:6px solid #ff55ae;
+    border-right:6px solid #914fff;
+    animation:spin 1s linear infinite;
+    margin-bottom:25px;
+    box-shadow:0 0 25px rgba(255,70,170,.25);
+}
+
+@keyframes spin{
+    from{transform:rotate(0deg)}
+    to{transform:rotate(360deg)}
+}
+
+.loadingHeart{
+    font-size:60px;
+    animation:pulse 1s infinite;
+}
+
+.loadingText{
+    margin-top:20px;
+    font-size:20px;
+    color:#ff9ad0;
+}
+
+.loadingDots{
+    margin-top:10px;
+    color:#b98cff;
+    font-size:20px;
+    letter-spacing:5px;
+    animation:dots 1.2s infinite;
+}
+
+@keyframes dots{
+    0%,20%{opacity:.2}
+    50%{opacity:1}
+    100%{opacity:.2}
+}
+
+.loading.fadeOut{
+    opacity:0;
+    pointer-events:none;
+}
+</style>
+</head>
+
+<body>
+
+<div id="particles"></div>
+
+<div class="loading" id="loading">
+
+    <div class="loader"></div>
+
+    <div class="loadingHeart">❤️</div>
+
+    <div class="loadingText">
+        ثواني يا روحي 🥹❤️
+    </div>
+
+    <div class="loadingDots">
+        • • •
+    </div>
+
+</div>
+
+<div id="lockScreen">
+
+    <div class="lockBox">
+
+        <div class="lockHeart">💗</div>
+
+        <h1>Fairouz</h1>
+
+        <p class="small">
+            في حاجة صغيرة مستنياكي جوا ❤️
+        </p>
+
+        <input
+            type="text"
+            id="password"
+            class="password"
+            placeholder="اكتبي الباسورد هنا..."
+            autocomplete="off"
+        >
+
+        <button class="enterBtn" onclick="checkPassword()">
+            ادخلي يا روحي ❤️
+        </button>
+
+        <div class="error" id="error"></div>
+
+    </div>
+
+</div>
+
+<main id="main">
+
+    <section class="hero">
+
+        <div class="heroContent">
+
+            <div class="badge">
+                ✨ ❤️ ليكي إنتِ بس ❤️ ✨
+            </div>
+
+            <div class="heroPhoto">
+                <img src="fairouz.jpg" alt="Fairouz">
+            </div>
+
+            <h1>Fairouz</h1>
+
+            <h2>بحبك ❤️</h2>
+
+            <p class="heroText">
+                في حاجات كتير ممكن تتقال...
+                بس في حاجات القلب بيحسها أكتر ما بيعرف يقولها.
+                وإنتِ واحدة من أجمل الحاجات اللي حصلتلي ❤️
+            </p>
+
+            <div class="scrollHint">
+                ↓ انزلي تحت يا حبيبتي ↓
+            </div>
+
+            <div class="brand">Fairouz</div>
+
+        </div>
+
+    </section>
+
+    <section class="loveSection">
+
+        <h2 class="sectionTitle">
+            ❤️ إنتِ عارفة إنتِ بالنسبة لي إيه؟
+        </h2>
+
+        <div class="glass loveBox">
+
+            <p>
+                إنتِ مش مجرد اسم في حياتي...
+                إنتِ بقيتي من التفاصيل اللي يومي مبيكملش من غيرها.
+            </p>
+
+            <br>
+
+            <p>
+                وجودك لوحده بيخليني أحس إن الدنيا أهدى وأجمل،
+                وحتى أبسط كلام منك بيفضل معايا وقت طويل.
+            </p>
+
+            <br>
+
+            <p class="highlight">
+                وبصراحة؟ أنا محظوظ إنك في حياتي ❤️
+            </p>
+
+        </div>
+
+        <div class="brand">Fairouz</div>
+
+    </section>
+
+    <section class="counterSection">
+
+        <h2 class="sectionTitle">
+            ❤️ من يوم ما بقيتي في حياتي
+        </h2>
+
+        <div class="glass counterBox">
+
+            <div class="counterIntro">
+                وكل ثانية بتعدّي بتخليني أحبك أكتر 🥹❤️
+            </div>
+
+            <div class="counterGrid">
+
+                <div class="time">
+                    <strong id="years">0</strong>
+                    <span>سنة</span>
+                </div>
+
+                <div class="time">
+                    <strong id="months">0</strong>
+                    <span>شهر</span>
+                </div>
+
+                <div class="time">
+                    <strong id="days">0</strong>
+                    <span>يوم</span>
+                </div>
+
+                <div class="time">
+                    <strong id="hours">0</strong>
+                    <span>ساعة</span>
+                </div>
+
+                <div class="time">
+                    <strong id="minutes">0</strong>
+                    <span>دقيقة</span>
+                </div>
+
+                <div class="time">
+                    <strong id="seconds">0</strong>
+                    <span>ثانية</span>
+                </div>
+
+            </div>
+
+            <div class="startDate">
+                البداية كانت يوم 15 / 8 / 2026 ❤️
+            </div>
+
+        </div>
+
+        <div class="brand">Fairouz</div>
+
+    </section>
+
+    <section class="cardsSection">
+
+        <h2 class="cardsTitle">
+            ❤️ عندي أربع حاجات عايز أقولهم
+        </h2>
+
+        <div class="cards">
+
+            <div class="loveCard" onclick="openCard(this)">
+                <div class="cardNumber">1</div>
+                <div class="cardHint">دوسي هنا ❤️</div>
+                <div class="cardMessage">
+                    محبتش ❤️
+                </div>
+            </div>
+
+            <div class="loveCard" onclick="openCard(this)">
+                <div class="cardNumber">2</div>
+                <div class="cardHint">دوسي هنا ❤️</div>
+                <div class="cardMessage">
+                    ولا أحب ❤️
+                </div>
+            </div>
+
+            <div class="loveCard" onclick="openCard(this)">
+                <div class="cardNumber">3</div>
+                <div class="cardHint">دوسي هنا ❤️</div>
+                <div class="cardMessage">
+                    ولا هحب حد ❤️
+                </div>
+            </div>
+
+            <div class="loveCard" onclick="openCard(this)">
+                <div class="cardNumber">4</div>
+                <div class="cardHint">دوسي هنا ❤️</div>
+                <div class="cardMessage">
+                    زي ما حبيتك يا أجمل حاجة في حياتي ❤️
+                </div>
+            </div>
+
+        </div>
+
+        <div class="brand">Fairouz</div>
+
+    </section>
+
+    <section class="finishSection">
+
+        <div
+            class="glass finishButton"
+            onclick="showLetter()"
+        >
+
+            <span class="finishIcon">💌</span>
+
+            لسه مخلصتش...
+            <br>
+
+            <small>دوسي هنا ❤️</small>
+
+        </div>
+
+        <div class="brand">Fairouz</div>
+
+    </section>
+
+    <section class="loveSection">
+
+        <h2 class="sectionTitle">
+            ❤️ ولسه في كلام كتير
+        </h2>
+
+        <div class="glass loveBox">
+
+            <p>
+                مهما حاولت أكتب أو أقول،
+                هيفضل جوايا كلام أكتر بكتير من اللي قدرت أوصفه.
+            </p>
+
+            <br>
+
+            <p class="highlight">
+                بس أهم حاجة عندي إنك تعرفي إنك غالية عندي جدًا ❤️
+            </p>
+
+        </div>
+
+        <div class="brand">Fairouz</div>
+
+    </section>
+
+</main>
+
+<div class="musicBox">
+
+    <div class="musicIcon">🎵</div>
+
+    <div class="musicInfo">
+
+        <strong>أغنيتنا ❤️</strong>
+
+        <small id="musicStatus">
+            اضغطي تشغيل...
+        </small>
+
+    </div>
+
+    <button
+        class="musicBtn"
+        onclick="toggleMusic()"
+        id="musicBtn"
+    >
+        ▶
+    </button>
+
+</div>
+
+<div style="position:fixed;left:-9999px;top:-9999px;">
+
+    <iframe
+        id="youtubePlayer"
+        width="1"
+        height="1"
+        src="https://www.youtube.com/embed/0wPhbmeNSOs?enablejsapi=1&loop=1&playlist=0wPhbmeNSOs"
+        title="Fairouz Music"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+    ></iframe>
+
+</div>
+
+<div class="modal" id="letterModal">
+
+    <div class="modalBox">
+
+        <button
+            class="close"
+            onclick="closeLetter()"
+        >
+            ×
+        </button>
+
+        <div class="modalTitle">
+            بصي يا حبيبتي ❤️
+        </div>
+
+        <!-- الرسالة بتتكتب هنا حرف حرف -->
+
+        <div class="modalText" id="typingMessage"></div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* ================= LOADING ================= */
+
+(function(){
+
+    function hideLoading(){
+
+        const loading =
+            document.getElementById("loading");
+
+        if(!loading) return;
+
+        loading.classList.add("fadeOut");
+
+        setTimeout(function(){
+
+            loading.style.display = "none";
+
+        },1000);
+
+    }
+
+    setTimeout(hideLoading,2500);
+
+})();
+
+
+/* ================= PASSWORD ================= */
+
+function checkPassword(){
+
+    const pass =
+        document
+        .getElementById("password")
+        .value
+        .trim();
+
+    const error =
+        document.getElementById("error");
+
+    if(pass === "Fairouz"){
+
+        document
+        .getElementById("lockScreen")
+        .style.opacity = "0";
+
+        document
+        .getElementById("lockScreen")
+        .style.pointerEvents = "none";
+
+        document
+        .getElementById("main")
+        .style.display = "block";
+
+        setTimeout(function(){
+
+            document
+            .getElementById("lockScreen")
+            .style.display = "none";
+
+        },1000);
+
+        createParticles();
+
+    }else{
+
+        error.innerHTML =
+            "لا يا روحي 😂❤️ جربي تاني";
+
+        document
+        .getElementById("password")
+        .value = "";
+
+    }
+
+}
+
+
+/* ================= ENTER KEY ================= */
+
+document
+.getElementById("password")
+.addEventListener("keydown",function(e){
+
+    if(e.key === "Enter"){
+
+        checkPassword();
+
+    }
+
+});
+
+
+/* ================= PARTICLES ================= */
+
+function createParticles(){
+
+    const container =
+        document.getElementById("particles");
+
+    const emojis = [
+        "❤️",
+        "💗",
+        "💕",
+        "💖",
+        "💘",
+        "💝",
+        "✨",
+        "💫",
+        "🌸"
+    ];
+
+    setInterval(function(){
+
+        const p =
+            document.createElement("div");
+
+        p.className = "particle";
+
+        p.innerText =
+            emojis[
+                Math.floor(
+                    Math.random()*emojis.length
+                )
+            ];
+
+        p.style.left =
+            Math.random()*100 + "%";
+
+        p.style.fontSize =
+            (12 + Math.random()*25) + "px";
+
+        p.style.animationDuration =
+            (7 + Math.random()*9) + "s";
+
+        container.appendChild(p);
+
+        setTimeout(function(){
+
+            p.remove();
+
+        },16000);
+
+    },500);
+
+}
+
+
+/* ================= CARDS ================= */
+
+function openCard(card){
+
+    card.classList.toggle("open");
+
+}
+
+
+/* ================= COUNTER ================= */
+
+const startDate =
+    new Date("2026-08-15T00:00:00");
+
+
+function updateCounter(){
+
+    const now =
+        new Date();
+
+    if(now < startDate) return;
+
+    let years =
+        now.getFullYear() -
+        startDate.getFullYear();
+
+    let months =
+        now.getMonth() -
+        startDate.getMonth();
+
+    let days =
+        now.getDate() -
+        startDate.getDate();
+
+    let hours =
+        now.getHours() -
+        startDate.getHours();
+
+    let minutes =
+        now.getMinutes() -
+        startDate.getMinutes();
+
+    let seconds =
+        now.getSeconds() -
+        startDate.getSeconds();
+
+
+    if(seconds < 0){
+
+        seconds += 60;
+        minutes--;
+
+    }
+
+    if(minutes < 0){
+
+        minutes += 60;
+        hours--;
+
+    }
+
+    if(hours < 0){
+
+        hours += 24;
+        days--;
+
+    }
+
+    if(days < 0){
+
+        const previousMonth =
+            new Date(
+                now.getFullYear(),
+                now.getMonth(),
+                0
+            ).getDate();
+
+        days += previousMonth;
+
+        months--;
+
+    }
+
+    if(months < 0){
+
+        months += 12;
+
+        years--;
+
+    }
+
+
+    document
+    .getElementById("years")
+    .innerText = years;
+
+    document
+    .getElementById("months")
+    .innerText = months;
+
+    document
+    .getElementById("days")
+    .innerText = days;
+
+    document
+    .getElementById("hours")
+    .innerText = hours;
+
+    document
+    .getElementById("minutes")
+    .innerText = minutes;
+
+    document
+    .getElementById("seconds")
+    .innerText = seconds;
+
+}
+
+
+updateCounter();
+
+setInterval(
+    updateCounter,
+    1000
+);
+
+
+/* ================= TYPING MESSAGE ================= */
+
+const messageText = `بصي يا حبيبتي، أنا مش عارف أوصفلك قد إيه وجودك في حياتي فارق معايا ❤️
+إنتِ مش مجرد واحدة بحبها، إنتِ بقيتي جزء من يومي وتفاصيله، وأي حاجة حلوة بتحصل نفسي أحكيلك عنها وأشاركك فيها.
+
+بحب كلامك، ضحكتك، طريقتك، وحتى التفاصيل الصغيرة اللي يمكن إنتِ مش واخدة بالك منها، أنا باخد بالي منها كلها 🥹❤️
+
+وجودك بيخليني مبسوط من غير سبب، وكلمة منك ممكن تغيّر يومي كله.
+ومهما اتكلمت، هفضل حاسس إن الكلام قليل عليكي.
+
+أنا بحبك زي ما إنتِ، بكل تفاصيلك، ومش محتاج منك تكوني حد تاني عشان أحبك أكتر، لأنك أصلًا بالنسبة لي كفاية وزيادة ❤️🫶🏻
+
+نفسي أفضل دايمًا الشخص اللي تلاقيه جنبك، في وقت فرحتك قبل زعلك، وأكون سبب في ابتسامتك حتى لو بحاجة بسيطة.
+
+باختصار كده… أنا محظوظ إنك في حياتي، وبحبك ❤️`;
+
+let typingStarted = false;
+
+function startTyping(){
+
+    if(typingStarted) return;
+
+    typingStarted = true;
+
+    const element =
+        document.getElementById("typingMessage");
+
+    element.innerHTML = "";
+
+    let i = 0;
+
+    function type(){
+
+        if(i < messageText.length){
+
+            if(messageText[i] === "\n"){
+
+                element.innerHTML += "<br>";
+
+            }else{
+
+                element.innerHTML += messageText[i];
+
+            }
+
+            i++;
+
+            setTimeout(type,35);
+
+        }
+
+    }
+
+    type();
+
+}
+
+
+/* ================= LETTER ================= */
+
+function showLetter(){
+
+    document
+    .getElementById("letterModal")
+    .classList.add("show");
+
+    startTyping();
+
+}
+
+
+function closeLetter(){
+
+    document
+    .getElementById("letterModal")
+    .classList.remove("show");
+
+}
+
+
+/* ================= MUSIC ================= */
+
+let player;
+
+let musicPlaying = false;
+
+
+window.onYouTubeIframeAPIReady =
+function(){
+
+    player =
+        new YT.Player(
+            "youtubePlayer",
+            {
+                events:{
+                    onReady:function(){}
+                }
+            }
+        );
+
+};
+
+
+const tag =
+    document.createElement("script");
+
+tag.src =
+    "https://www.youtube.com/iframe_api";
+
+document.body.appendChild(tag);
+
+
+function toggleMusic(){
+
+    if(!player){
+
+        document
+        .getElementById("musicStatus")
+        .innerText =
+            "جاري تجهيز الأغنية...";
+
+        return;
+
+    }
+
+
+    if(!musicPlaying){
+
+        player.playVideo();
+
+        musicPlaying = true;
+
+        document
+        .getElementById("musicBtn")
+        .innerText = "❚❚";
+
+        document
+        .getElementById("musicStatus")
+        .innerText =
+            "شغالة دلوقتي ❤️";
+
+    }else{
+
+        player.pauseVideo();
+
+        musicPlaying = false;
+
+        document
+        .getElementById("musicBtn")
+        .innerText = "▶";
+
+        document
+        .getElementById("musicStatus")
+        .innerText =
+            "متوقفة مؤقتًا";
+
+    }
+
+}
+
+
+/* ================= MODAL OUTSIDE CLICK ================= */
+
+document
+.getElementById("letterModal")
+.addEventListener(
+    "click",
+    function(e){
+
+        if(e.target === this){
+
+            closeLetter();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
